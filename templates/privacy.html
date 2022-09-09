@@ -1,0 +1,965 @@
+
+{% load static %}
+<!DOCTYPE html >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width" >
+        <title>Media Tools</title>
+        <link rel="icon" href="https://magnificent-seahorse-cc13a0.netlify.app/assets/img/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
+    </head>
+    <style type="text/css">
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+        /*===== VARIABLES CSS =====*/
+        :root {
+          --header-height: 3rem;
+
+          /*========== Colors ==========*/
+          --first-color: #069C54;
+          --first-color-alt: #048654;
+          --title-color: #393939;
+          --text-color: #707070;
+          --text-color-light: #A6A6A6;
+          --body-color: #FBFEFD;
+          --container-color: #FFFFFF;
+
+          /*========== Font and typography ==========*/
+          --body-font: 'Poppins', sans-serif;
+          --biggest-font-size: 2.25rem;
+          --h1-font-size: 1.5rem;
+          --h2-font-size: 1.25rem;
+          --h3-font-size: 1rem;
+          --normal-font-size: .938rem;
+          --small-font-size: .813rem;
+          --smaller-font-size: .75rem;
+
+          /*========== Font weight ==========*/
+          --font-medium: 500;
+          --font-semi-bold: 600;
+
+          /*========== Margenes ==========*/
+          --mb-1: .5rem;
+          --mb-2: 1rem;
+          --mb-3: 1.5rem;
+          --mb-4: 2rem;
+          --mb-5: 2.5rem;
+          --mb-6: 3rem;
+
+          /*========== z index ==========*/
+          --z-tooltip: 10;
+          --z-fixed: 100;
+        }
+
+        @media screen and (min-width: 768px){
+          :root{
+            --biggest-font-size: 4rem;
+            --h1-font-size: 2.25rem;
+            --h2-font-size: 1.5rem;
+            --h3-font-size: 1.25rem;
+            --normal-font-size: 1rem;
+            --small-font-size: .875rem;
+            --smaller-font-size: .813rem;
+          }
+        }
+
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            border-radius: 10px;
+            margin: 0;
+            padding: 5px;
+            background-color: #FBFEFD;
+        }
+
+        /* global */
+        .container{
+            width: 80%; 
+            margin: auto;
+            overflow: hidden;
+        }
+
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        .button_1{
+            height: 38px;
+            padding-left: 5px;
+            padding-right: 5px;
+            background: #5e7ed8;
+            color: #ffffff;
+            border: none;
+
+        }
+
+        .dark{
+            background: #35424a;
+            color: #ffffff;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            
+        }
+
+        /* global part ends*/
+
+        /* header*/
+        header{
+            background-color: #FBFEFD;
+            box-shadow: 10px 10px 24px -7px rgba(0,0,0,0.66);
+            color: dimgray;
+            padding-top: 30px;
+            border-radius: 4px;
+            min-height: 70px;
+            border-bottom:rgb(38, 143, 73)  4px solid;
+        }
+
+
+        header a{
+            color: dimgray;
+            text-decoration: none;
+            
+            font-size: 16px;
+        }
+
+
+        header li{
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding{
+            float: left;
+        }
+
+        header #branding h1{
+            margin: 0;
+        }
+
+        header nav{
+            float: right;
+            margin-top: 20px;
+        }
+
+        /* to highlight the Techno in heading and current page in navigation */
+        header .highlight, header .current a{
+            color: rgb(38, 143, 73);
+            font-weight: bold;
+        }
+
+        /* hover effect on navigation links */
+        header a:hover{
+             color: rgb(38, 143, 73);
+             font-weight: bold;
+        }
+
+
+        /* showcase section */ 
+        #showcase{
+            /*background: url('../img/android.png'); */
+            width: 100%;
+            min-height: 500px;
+            text-align: center;
+            color: dimgray;
+
+        }
+
+        #showcase h1{
+          color: rgb(38, 143, 73);
+            font-size: 55px;
+            margin-top: 130px;
+            margin-bottom: 10px;
+        }
+
+        #showcase p{
+            font-size: 20px;
+        }
+
+
+        /* newsLetter section*/
+        #newsLetter {
+            /* background: #FBFEFD; */
+            color: rgb(38, 143, 73);
+            box-shadow: 10px 10px 24px -7px rgba(0,0,0,0.66);
+            border-radius: 4px;
+            /*border: rgb(38, 143, 73) solid 1px;*/
+            /* border-bottom: #FBFEFD solid 3px; */
+            padding: 15px;
+        }
+
+        #newsLetter h2{
+          align-items: center;
+          text-align: center;
+            float: center;
+        }
+
+        #newsLetter form{
+            float: right;
+            margin-top: 15px;
+           
+        }
+
+        #newsLetter input[type="email"]{
+            width: 250px;
+            height: 25px;
+            padding: 4px;
+        }
+
+        /* boxes section */
+
+        #boxes{
+            margin-top: 20px;
+            
+        }
+
+        #boxes .box img{
+            width: 100px;
+            border-radius: 100px;
+            border: rgb(38, 143, 73) solid 1px;
+            height: 100px;
+        }
+        #boxes .container a{
+          text-decoration: none;
+          color: black;
+          
+        }
+        #boxes .box{
+            width: 30%;
+            float: left;
+            text-align: center;
+            padding: 2px;
+            padding: 5px;
+            margin: 5px;
+        }
+        .box h3{
+          color: rgb(38, 143, 73);
+        }
+
+
+        /* sidebar*/
+        aside#sidebar{
+            float: right;
+            width: 30%;
+        }
+
+        /*main-col*/
+        article#main-col{
+            float: left;
+            width: 65%;
+        }
+
+
+        /*services*/
+        ul#services li{
+            list-style: none;
+            border: #cccccc solid 1px;
+            background:#e6e6e6;
+            padding: 20px;
+            margin-bottom: 5px;
+        }
+
+        aside#sidebar .quote input, aside#sidebar .quote textarea {
+            width: 90%;
+            padding: 5px;
+        } 
+
+
+        /*footer*/
+
+        footer{
+            background: rgb(38, 143, 73);
+            color: #FBFEFD;
+            text-align: center;
+         
+        }
+
+        /*Upload*/
+
+        .file-upload {
+          background-color: #ffffff;
+          width: 50%;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        .file-upload-btn {
+          width: 100%;
+          margin: 0;
+          color: #fff;
+          background: rgb(38, 143, 73);
+          border: none;
+          padding: 10px;
+          border-radius: 4px;
+          border-bottom: 4px solid rgb(38, 143, 73);
+          transition: all .2s ease;
+          outline: none;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .file-upload-btn:hover {
+          background: rgb(38, 143, 73);
+          color: #ffffff;
+          transition: all .2s ease;
+          cursor: pointer;
+        }
+
+        .file-upload-btn:active {
+          border: 0;
+          transition: all .2s ease;
+        }
+
+        .file-upload-content {
+          display: none;
+          text-align: center;
+        }
+
+        .file-upload-input {
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          outline: none;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        .image-upload-wrap {
+          margin-top: 20px;
+          border: 4px dashed rgb(38, 143, 73);
+          position: relative;
+        }
+
+        .image-dropping,
+        .image-upload-wrap:hover {
+          background-color: rgb(38, 143, 73);
+          border: 4px dashed #ffffff;
+        }
+
+        .image-title-wrap {
+          padding: 0 15px 15px 15px;
+          color: whitesmoke;
+          
+        }
+        /*.image-title-wrap button{
+            color: green;
+        }*/
+
+        .drag-text {
+          text-align: center;
+        }
+
+        .drag-text h3 {
+          font-weight: 100;
+          text-transform: uppercase;
+          color: rgb(38, 143, 73);
+          padding: 60px 0;
+        }
+
+        .file-upload-image {
+          max-height: 200px;
+          max-width: 200px;
+          margin: auto;
+          padding: 20px;
+        }
+
+        .remove-image {
+          width: 200px;
+          margin: 0;
+          color: whitesmoke;
+          background: rgb(38, 143, 73);
+          border: none;
+          padding: 10px;
+          border-radius: 4px;
+          border-bottom: 4px solid rgb(38, 143, 73);
+          transition: all .2s ease;
+          outline: none;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .remove-image:hover {
+          background: rgb(38, 143, 73);
+          color: #ffffff;
+          transition: all .2s ease;
+          cursor: pointer;
+        }
+
+        .remove-image:active {
+          border: 0;
+          transition: all .2s ease;
+        }
+        .uploader{
+            padding-top: 10%;
+            padding-bottom: 10%;
+            height: 80%;
+            /*margin-top: 10%;
+            margin-bottom: 30%;*/
+        }
+
+
+
+        .wrapper{
+          
+          /*width:40%;
+          height:40%;*/
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        }
+          
+
+        .file-uploaderr{
+
+            height:200px;
+            width:200px;
+            border-radius: 100px;
+            position:relative;
+
+            display:flex;
+            justify-content:center;
+            align-items: center;  
+
+            border:4px solid #FFFFFF;
+            overflow:hidden;
+            background-image: linear-gradient(to bottom, rgb(38, 143, 73) 50%, #FFFFFF 50%);
+            background-size: 100% 200%;
+            transition: all 1s;
+            color: #FFFFFF;
+            font-size:100px;
+
+        }
+
+        .file-uploaderr a{
+
+          height:200px;
+          width:200px;
+          position:absolute;
+          top:0;
+          left:0;
+          opacity:0;
+          cursor:pointer;
+
+        }
+
+        .file-uploaderr a:hover{
+
+          background-position: 0 -100%;
+
+          color:rgb(38, 143, 73);
+
+        }
+
+
+        /*Documents*/
+        .containerss {
+          height: 100vh;
+          width: 100%;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          background-color: #fcfcfc;
+        }
+
+        .card {
+          border-radius: 10px;
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+          width: 600px;
+          height: 360px;
+          background-color: #ffffff;
+          padding: 10px 30px 40px;
+        }
+
+        .card h3 {
+          font-size: 22px;
+          font-weight: 600;
+          
+        }
+
+        .drop_box {
+          margin: 10px 0;
+          padding: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border: 3px dotted #a3a3a3;
+          border-radius: 5px;
+        }
+
+        .drop_box h4 {
+          font-size: 16px;
+          font-weight: 400;
+          color: #2e2e2e;
+        }
+
+        .drop_box p {
+          margin-top: 10px;
+          margin-bottom: 20px;
+          font-size: 12px;
+          color: #a3a3a3;
+        }
+
+        .btn {
+          text-decoration: none;
+          background-color: #005af0;
+          color: #ffffff;
+          padding: 10px 20px;
+          border: none;
+          outline: none;
+          transition: 0.3s;
+        }
+
+        .btn:hover{
+          text-decoration: none;
+          background-color: #ffffff;
+          color: #005af0;
+          padding: 10px 20px;
+          border: none;
+          outline: 1px solid #010101;
+        }
+        .form input {
+          margin: 10px 0;
+          width: 100%;
+          background-color: #e2e2e2;
+          border: none;
+          outline: none;
+          padding: 12px 20px;
+          border-radius: 4px;
+        }
+        /* Download*/
+        .body-container-wrapper{
+          margin: auto;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          padding: 5%;
+
+        }
+        .body-container-wrapper .page-center{
+          border: solid white; 1px;
+          border-radius: 5px;
+          box-shadow: 7px 7px 7px 7px gray;
+          padding: 20px;
+          text-align: center;
+          background: white;
+        }
+        .body-container-wrapper .page-center img{
+            width: 80%;
+            height: 80%;
+        }
+        .body-container-wrapper .page-center a{
+          width: 100%;
+         /* margin: 0;*/
+          /*height: 80px;*/
+          color: #fff;
+          background: rgb(38, 143, 73);
+          border: none;
+          padding: 10px;
+          border-radius: 4px;
+          /*border-bottom: 4px solid rgb(38, 143, 73);*/
+          transition: all .2s ease;
+          outline: none;
+          text-transform: uppercase;
+          font-weight: 700;
+          text-decoration: none;
+        }
+        section{
+          padding: 4rem 0 2rem;
+        }
+
+        .section-title, .section-subtitle{
+          text-align: center;
+        }
+
+        .section-title{
+          font-size: var(--h1-font-size);
+          color: var(--title-color);
+          margin-bottom: var(--mb-3);
+        }
+
+        .section-subtitle{
+          display: block;
+          color: var(--first-color);
+          font-weight: var(--font-medium);
+          margin-bottom: var(--mb-1);
+        }
+
+        /*========== LAYOUT ==========*/
+        .bd-container{
+          max-width: 960px;
+          width: calc(100% - 2rem);
+          margin-left: var(--mb-2);
+          margin-right: var(--mb-2);
+        }
+
+        .bd-grid{
+          display: grid;
+          gap: 1.5rem;
+        }
+
+        .l-header{
+          width: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: var(--z-fixed);
+          background-color: var(--body-color);
+        }
+
+
+        /*========== MENU ==========*/
+        .mains{
+            padding: 5%;
+        }
+        #menu{
+            padding: 2%;
+            box-shadow: 0 2px 4px rgba(3,74,40,.15);
+            border-radius: 5px;
+        }
+        .menu__container{
+          grid-template-columns: repeat(2, 1fr);
+          justify-content: center;
+        }
+
+        .menu__content{
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          background-color: var(--container-color);
+          border-radius: .5rem;
+          box-shadow: 0 2px 4px rgba(3,74,40,.15);
+          padding: .75rem;
+        }
+
+        .menu__img{
+          width: 100px;
+          align-self: center;
+          margin-bottom: var(--mb-2);
+        }
+
+        .menu__name, .menu__preci{
+          font-weight: var(--font-semi-bold);
+          color: var(--title-color);
+        }
+
+        .menu__name{
+          font-size: var(--normal-font-size);
+        }
+
+        .menu__detail, .menu__preci{
+          font-size: var(--small-font-size);
+        }
+
+        .menu__detail{
+          margin-bottom: var(--mb-1);
+        }
+
+        .menu__button{
+          /*position: absolute;
+          bottom: 0;
+          right: 0;*/
+          color: white;
+          display: flex;
+          border-radius: 5px;
+          text-decoration: none;
+          padding: 5px;
+          align-items: center;
+          justify-content: center;
+          background: rgb(38, 143, 73);
+          /*padding: .625rem .813rem;
+          border-radius: .5rem 0 .5rem 0;*/
+        }
+
+        /*Tools*/
+
+
+
+        /* media queries*/
+        @media screen and (min-width: 768px){
+          body{
+            margin: 0;
+          }
+
+          .section{
+            padding-top: 8rem;
+          }
+
+          .nav{
+            height: calc(var(--header-height) + 1.5rem);
+          }
+          .nav__list{
+            display: flex;
+          }
+          .nav__item{
+            margin-left: var(--mb-5);
+            margin-bottom: 0;
+          }
+          .nav__toggle{
+            display: none;
+          }
+
+          .change-theme{
+            position: initial;
+            margin-left: var(--mb-2);
+          }
+
+          .home__container{
+            height: 100vh;
+            justify-items: center;
+          }
+
+          .services__container,
+          .menu__container{
+            margin-top: var(--mb-6);
+          }
+
+          .menu__container{
+            grid-template-columns: repeat(3, 210px);
+            column-gap: 4rem;
+          }
+          .menu__content{
+            padding: 1.5rem;
+          }
+          .menu__img{
+            width: 130px;
+          }
+
+          .app__store{
+            margin: 0 var(--mb-1) 0 0;
+          }
+        }
+
+        @media screen and (min-width: 960px){
+          .bd-container{
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .home__img{
+            width: 500px;
+          }
+
+          .about__container,
+          .app__container{
+            column-gap: 7rem;
+          }
+        }
+
+        #branding{
+            top: 0;
+            display: inline;
+        }
+
+
+        @media(max-width:768px){
+            header #branding,
+            header nav,
+            header nav li,
+            #newsLetter h2,
+            #newsLetter form,
+            #boxes .box,
+            article#main-col,
+            aside#sidebar{
+                text-align: center;
+                float: none;
+                width: 100%;
+             
+            }
+            header{
+                   padding-bottom: 10px;
+            }
+
+            #showcase h1{
+                margin-top: 40px;
+            }
+
+            #newsLetter button{
+                display: block;
+                width: 100%;
+            }
+
+            #newsLetter form input[type="email"]{
+                width: 100%;
+            }
+
+        }
+    </style>
+    <body>
+        <header>
+         <div class="container">
+             <div style="display:block;" id="branding" >
+                <img style="width: 70px; height: 70px; padding-bottom: 20px;" src="https://magnificent-seahorse-cc13a0.netlify.app/assets/img/brand.png">
+                <!-- <h1><span class="highlight">Media</span> Tools</h1> -->
+             </div>
+             <nav>
+                 <ul>
+                     <li><a href="/">Home</a></li>
+                     <li><a href="tools">Tools</a></li>
+                     <li><a href="about">About</a></li>
+                     <li><a href="policy">Policy</a></li>
+                     <li><a href="contact">Contact</a> </li>
+                 </ul>
+             </nav>
+         </div>
+        </header>
+
+    	<section style="padding: 70px;" class="downloader">
+        <div style="padding: 20px; width: 70%; margin: auto; box-shadow: 10px 10px 24px -7px rgba(0,0,0,0.66); border-radius: 5px;">
+          
+			<h2 style="text-align: center;"><b>PRIVACY POLICY</b></h2>
+			<p>Effective date: 2022-08-18</p>
+			<p>1. <b>Introduction</b></p>
+			<p>Welcome to <b> Media Tools</b>.</p>
+			<p><b>Media Tools</b> (“us”, “we”, or “our”) operates <b>www.mediatools.com</b> (hereinafter referred to as <b>“Service”</b>).</p>
+			<p>Our Privacy Policy governs your visit to <b>www.mediatools.com</b>, and explains how we collect, safeguard and disclose information that results from your use of our Service.</p>
+			<p>We use your data to provide and improve Service. By using Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions.</p>
+			<p>Our Terms and Conditions (<b>“Terms”</b>) govern all use of our Service and together with the Privacy Policy constitutes your agreement with us (<b>“agreement”</b>).</p>
+			<p>2. <b>Definitions</b></p>
+			<p><b>SERVICE</b> means the www.mediatools.com website operated by Media Tools.</p>
+			<p><b>PERSONAL DATA</b> means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</p>
+			<p><b>USAGE DATA</b> is data collected automatically either generated by the use of Service or from Service infrastructure itself (for example, the duration of a page visit).</p>
+			<p><b>COOKIES</b> are small files stored on your device (computer or mobile device).</p>
+			<p><b>DATA CONTROLLER</b> means a natural or legal person who (either alone or jointly or in common with other persons) determines the purposes for which and the manner in which any personal data are, or are to be, processed. For the purpose of this Privacy Policy, we are a Data Controller of your data.</p>
+			<p><b>DATA PROCESSORS (OR SERVICE PROVIDERS)</b> means any natural or legal person who processes the data on behalf of the Data Controller. We may use the services of various Service Providers in order to process your data more effectively.</p> <p><b>DATA SUBJECT</b> is any living individual who is the subject of Personal Data.</p>
+			<p><b>THE USER</b> is the individual using our Service. The User corresponds to the Data Subject, who is the subject of Personal Data.</p>
+			<p>3. <b>Information Collection and Use</b></p>
+			<p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+			<p>4. <b>Types of Data Collected</b></p>
+			<p><b>Personal Data</b></p>
+			<p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (<b>“Personal Data”</b>). Personally identifiable information may include, but is not limited to:</p>
+			<p>0.1. Email address</p>
+			<p>0.2. First name and last name</p>
+			<p>0.3. Phone number</p>
+			<p>0.4. Address, Country, State, Province, ZIP/Postal code, City</p>
+			<p>0.5. Cookies and Usage Data</p>
+			<p>We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link.</p>
+			<p><b>Usage Data</b></p>
+			<p>We may also collect information that your browser sends whenever you visit our Service or when you access Service by or through any device (<b>“Usage Data”</b>).</p>
+			<p>This Usage Data may include information such as your computer’s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+			<p>When you access Service with a device, this Usage Data may include information such as the type of device you use, your device unique ID, the IP address of your device, your device operating system, the type of Internet browser you use, unique device identifiers and other diagnostic data.</p>
+			<p><b>Location Data</b></p><p>We may use and store information about your location if you give us permission to do so (<b>“Location Data”</b>). We use this data to provide features of our Service, to improve and customize our Service.</p><p>You can enable or disable location services when you use our Service at any time by way of your device settings.</p>
+			<p><b>Tracking Cookies Data</b></p>
+			<p>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information.</p>
+			<p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyze our Service.</p>
+			<p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+			<p>Examples of Cookies we use:</p>
+			<p>0.1. <b>Session Cookies:</b> We use Session Cookies to operate our Service.</p>
+			<p>0.2. <b>Preference Cookies:</b> We use Preference Cookies to remember your preferences and various settings.</p>
+			<p>0.3. <b>Security Cookies:</b> We use Security Cookies for security purposes.</p>
+			<p>0.4. <b>Advertising Cookies:</b> Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.</p>
+			<p><b>Other Data</b></p>
+			<p>While using our Service, we may also collect the following information: sex, age, date of birth, place of birth, passport details, citizenship, registration at place of residence and actual address, telephone number (work, mobile), details of documents on education, qualification, professional training, employment agreements, <a href="https://policymaker.io/non-disclosure-agreement/">NDA agreements</a>, information on bonuses and compensation, information on marital status, family members, social security (or other taxpayer identification) number, office location and other data.</p>
+			<p>5. <b>Use of Data</b></p>
+			<p>Media Tools uses the collected data for various purposes:</p>
+			<p>0.1. to provide and maintain our Service;</p>
+			<p>0.2. to notify you about changes to our Service;</p>
+			<p>0.3. to allow you to participate in interactive features of our Service when you choose to do so;</p>
+			<p>0.4. to provide customer support;</p>
+			<p>0.5. to gather analysis or valuable information so that we can improve our Service;</p>
+			<p>0.6. to monitor the usage of our Service;</p>
+			<p>0.7. to detect, prevent and address technical issues;</p>
+			<p>0.8. to fulfil any other purpose for which you provide it;</p>
+			<p>0.9. to carry out our obligations and enforce our rights arising from any contracts entered into between you and us, including for billing and collection;</p>
+			<p>0.10. to provide you with notices about your account and/or subscription, including expiration and renewal notices, email-instructions, etc.;</p>
+			<p>0.11. to provide you with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless you have opted not to receive such information;</p>
+			<p>0.12. in any other way we may describe when you provide the information;</p>
+			<p>0.13. for any other purpose with your consent.</p>
+			<p>6. <b>Retention of Data</b></p>
+			<p>We will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+			<p>We will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer time periods.</p>
+			<p>7. <b>Transfer of Data</b></p>
+			<p>Your information, including Personal Data, may be transferred to – and maintained on – computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>
+			<p>If you are located outside Kenya and choose to provide information to us, please note that we transfer the data, including Personal Data, to Kenya and process it there.</p>
+			<p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
+			<p>Media Tools will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+			<p>8. <b>Disclosure of Data</b></p>
+			<p>We may disclose personal information that we collect, or you provide:</p>
+			<p>0.1. <b>Disclosure for Law Enforcement.</b></p><p>Under certain circumstances, we may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities.</p><p>0.2. <b>Business Transaction.</b></p><p>If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.</p><p>0.3. <b>Other cases. We may disclose your information also:</b></p><p>0.3.1. to our subsidiaries and affiliates;</p><p>0.3.2. to contractors, service providers, and other third parties we use to support our business;</p><p>0.3.3. to fulfill the purpose for which you provide it;</p><p>0.3.4. for the purpose of including your company’s logo on our website;</p><p>0.3.5. for any other purpose disclosed by us when you provide the information;</p><p>0.3.6. with your consent in any other cases;</p><p>0.3.7. if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of the Company, our customers, or others.</p>
+			<p>9. <b>Security of Data</b></p>
+			<p>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+			<p>10. <b>Your Data Protection Rights Under General Data Protection Regulation (GDPR)
+			</b></p>
+			<p>If you are a resident of the European Union (EU) and European Economic Area (EEA), you have certain data protection rights, covered by GDPR.</p>
+			<p>We aim to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data.</p>
+			<p> If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please email us at <b>mediatools614@gmail.com</b>.</p>
+			<p>In certain circumstances, you have the following data protection rights:</p>
+			<p>0.1. the right to access, update or to delete the information we have on you;</p>
+			<p>0.2. the right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete;</p>
+			<p>0.3. the right to object. You have the right to object to our processing of your Personal Data;</p>
+			<p>0.4. the right of restriction. You have the right to request that we restrict the processing of your personal information;</p>
+			<p>0.5. the right to data portability. You have the right to be provided with a copy of your Personal Data in a structured, machine-readable and commonly used format;</p>
+			<p>0.6. the right to withdraw consent. You also have the right to withdraw your consent at any time where we rely on your consent to process your personal information;</p>
+			<p>Please note that we may ask you to verify your identity before responding to such requests. Please note, we may not able to provide Service without some necessary data.</p>
+			<p>You have the right to complain to a Data Protection Authority about our collection and use of your Personal Data. For more information, please contact your local data protection authority in the European Economic Area (EEA).</p>
+			<p>11. <b>Your Data Protection Rights under the California Privacy Protection Act (CalOPPA)</b></p>
+			<p>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law’s reach stretches well beyond California to require a person or company in the United States (and conceivable the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy.</p>
+			<p>According to CalOPPA we agree to the following:</p>
+			<p>0.1. users can visit our site anonymously;</p>
+			<p>0.2. our Privacy Policy link includes the word “Privacy”, and can easily be found on the home page of our website;</p>
+			<p>0.3. users will be notified of any privacy policy changes on our Privacy Policy Page;</p>
+			<p>0.4. users are able to change their personal information by emailing us at <b>mediatools614@gmail.com</b>.</p>
+			<p>Our Policy on “Do Not Track” Signals:</p>
+			<p>We honor Do Not Track signals and do not track, plant cookies, or use advertising when a Do Not Track browser mechanism is in place. Do Not Track is a preference you can set in your web browser to inform websites that you do not want to be tracked.</p>
+			<p>You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.</p>
+			<p>12. <b>Your Data Protection Rights under the California Consumer Privacy Act (CCPA)</b></p>
+			<p>If you are a California resident, you are entitled to learn what data we collect about you, ask to delete your data and not to sell (share) it. To exercise your data protection rights, you can make certain requests and ask us:</p>
+			<p><b>0.1. What personal information we have about you. If you make this request, we will return to you:</b></p>
+			<p>0.0.1. The categories of personal information we have collected about you.</p>
+			<p>0.0.2. The categories of sources from which we collect your personal information.</p>
+			<p>0.0.3. The business or commercial purpose for collecting or selling your personal information.</p>
+			<p>0.0.4. The categories of third parties with whom we share personal information.</p>
+			<p>0.0.5. The specific pieces of personal information we have collected about you.</p>
+			<p>0.0.6. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact.</p>
+			<p>0.0.7. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with.</p>
+			<p>Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.</p>
+			<p><b>0.2. To delete your personal information. If you make this request, we will delete the personal information we hold about you as of the date of your request from our records and direct any service providers to do the same. In some cases, deletion may be accomplished through de-identification of the information. If you choose to delete your personal information, you may not be able to use certain functions that require your personal information to operate.</b></p>
+			<p><b>0.3. To stop selling your personal information. We don’t sell or rent your personal information to any third parties for any purpose. We do not sell your personal information for monetary consideration. However, under some circumstances, a transfer of personal information to a third party, or within our family of companies, without monetary consideration may be considered a “sale” under California law. You are the only owner of your Personal Data and can request disclosure or deletion at any time.</b></p>
+			<p>If you submit a request to stop selling your personal information, we will stop making such transfers.</p>
+			<p>Please note, if you ask us to delete or stop selling your data, it may impact your experience with us, and you may not be able to participate in certain programs or membership services which require the usage of your personal information to function. But in no circumstances, we will discriminate against you for exercising your rights.</p>
+			<p>To exercise your California data protection rights described above, please send your request(s) by email: <b>mediatools614@gmail.com</b>.</p>
+			<p>Your data protection rights, described above, are covered by the CCPA, short for the California Consumer Privacy Act. To find out more, visit the official California Legislative Information website. The CCPA took effect on 01/01/2020.</p>
+			<p>13. <b>Service Providers</b></p>
+			<p>We may employ third party companies and individuals to facilitate our Service (<b>“Service Providers”</b>), provide Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.</p>
+			<p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+			<p>14. <b>Analytics</b></p>
+			<p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
+			<p>15. <b>CI/CD tools</b></p>
+			<p>We may use third-party Service Providers to automate the development process of our Service.</p>
+			<p>16. <b>Advertising</b></p><p>We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.</p>
+			<p>17. <b>Behavioral Remarketing</b></p>
+			<p>We may use remarketing services to advertise on third party websites to you after you visited our Service. We and our third-party vendors use cookies to inform, optimise and serve ads based on your past visits to our Service.</p>
+
+			<p>18. <b>Links to Other Sites</b></p>
+			<p>Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party’s site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
+			<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+			<p>For example, the outlined <a href="https://policymaker.io/privacy-policy/">privacy policy</a> has been made using <a href="https://policymaker.io/">PolicyMaker.io</a>, a free tool that helps create high-quality legal documents. PolicyMaker’s <a href="https://policymaker.io/privacy-policy/">privacy policy generator</a> is an easy-to-use tool for creating a <a href="https://policymaker.io/blog-privacy-policy/">privacy policy for blog</a>, website, e-commerce store or mobile app.</p>
+			<p>19. <b><b>Children’s Privacy</b></b></p>
+			<p>Our Services are not intended for use by children under the age of 18 (<b>“Child”</b> or <b>“Children”</b>).</p>
+			<p>We do not knowingly collect personally identifiable information from Children under 18. If you become aware that a Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from Children without verification of parental consent, we take steps to remove that information from our servers.</p>
+			<p>20. <b>Changes to This Privacy Policy</b></p>
+			<p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+			<p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update “effective date” at the top of this Privacy Policy.</p>
+			<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+			<p>21. <b>Contact Us</b></p>
+			<p>If you have any questions about this Privacy Policy, please contact us by email: <b>mediatools614@gmail.com</b>.</p>
+			<p style="margin-top: 5em; font-size: 0.7em;">This <a href="https://policymaker.io/privacy-policy/">Privacy Policy</a> was created for <b>www.mediatools.com</b> by <a href="https://policymaker.io">PolicyMaker.io</a> on 2022-08-18.</p>
+
+
+
+    	</div>
+      </section>
+
+		 <footer>
+            <div class="container">
+            <p> <a style="text-decoration: none; color: white;" href="about">MediaTools</a>, Copyright &copy; 2022</p>
+            </div>
+        </footer>
+        <script type="text/javascript" src="{% static 'css/main.js' %}"></script>
+    </body>
+</html>
